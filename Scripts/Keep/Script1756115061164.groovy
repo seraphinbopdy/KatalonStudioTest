@@ -23,7 +23,7 @@ import com.kms.katalon.core.util.KeywordUtil
 
 //import java.sql.*
 
-//String uniqueUserDataDir = "/tmp/chrome-profile-" + System.currentTimeMillis()
+String uniqueUserDataDir = "/tmp/chrome-profile-" + System.currentTimeMillis()
 
 RunConfiguration.setWebDriverPreferencesProperty("args", [
 	"--headless=new",

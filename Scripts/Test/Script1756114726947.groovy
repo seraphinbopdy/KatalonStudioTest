@@ -16,14 +16,32 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import com.kms.katalon.core.configuration.RunConfiguration
+import com.kms.katalon.core.util.KeywordUtil
+
+
+
+String uniqueUserDataDir = "/tmp/chrome-profile-" + System.currentTimeMillis()
+
+RunConfiguration.setWebDriverPreferencesProperty("args", [
+	"--headless=new",
+	"--user-data-dir=" + uniqueUserDataDir,
+	"--disable-dev-shm-usage",
+	"--no-sandbox",
+	"--disable-gpu"
+])
+
+
 
 WebUI.openBrowser('')
 
-WebUI.navigateToUrl('https://proxiserve.oc-sb.eu/auth/realms/opencell/protocol/openid-connect/auth?client_id=opencell-portal&redirect_uri=https%3A%2F%2Fproxiserve.oc-sb.eu%2Fopencell%2Ffrontend%2FDEMO%2Fportal%2FB2B%2Finvoices%2Flist&state=9a28ca59-72f2-4ec0-89d7-16060e31e293&response_mode=fragment&response_type=code&scope=openid&nonce=85e2adda-7081-4de1-9f5e-882674b56151')
+WebUI.navigateToUrl(GlobalVariable.loginUrl)
 
 WebUI.setText(findTestObject('Object Repository/Test/Page_/input_Franais_username'), 'opencell.admin')
 
 WebUI.setEncryptedText(findTestObject('Object Repository/Test/Page_/input_Franais_password'), 'w92AsKS6Pp5ImRK4eSzsTw==')
 
 WebUI.click(findTestObject('Object Repository/Test/Page_/input_Franais_kc-login'))
+
+println "✅ Connexion envoyée avec succès."
 
