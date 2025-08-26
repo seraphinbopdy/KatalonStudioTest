@@ -5,10 +5,15 @@
     "title": "Katalon Test Results - QA Dashboard",
     "timezone": "browser",
     "schemaVersion": 37,
-    "version": 2,
+    "version": 4,
     "refresh": "10s",
     "tags": ["CI", "Katalon", "QA", "Soutenance"],
     "panels": [
+      {
+        "type": "row",
+        "title": "📊 Global Stats",
+        "id": 100
+      },
       {
         "type": "stat",
         "title": "Total Tests",
@@ -18,108 +23,124 @@
       },
       {
         "type": "stat",
-        "title": "Passed Tests",
+        "title": "✅ Passed",
         "id": 2,
         "datasource": "PostgreSQL",
         "targets": [{ "rawSql": "SELECT COUNT(*) as passed FROM test_results WHERE test_status = 'PASSED'", "refId": "A" }]
       },
       {
         "type": "stat",
-        "title": "Failed Tests",
+        "title": "❌ Failed",
         "id": 3,
         "datasource": "PostgreSQL",
         "targets": [{ "rawSql": "SELECT COUNT(*) as failed FROM test_results WHERE test_status = 'FAILED'", "refId": "A" }]
       },
       {
         "type": "stat",
-        "title": "Skipped Tests",
+        "title": "⏭ Skipped",
         "id": 4,
         "datasource": "PostgreSQL",
         "targets": [{ "rawSql": "SELECT COUNT(*) as skipped FROM test_results WHERE test_status = 'SKIPPED'", "refId": "A" }]
       },
       {
-        "type": "stat",
+        "type": "gauge",
         "title": "Success Rate (%)",
         "id": 5,
         "datasource": "PostgreSQL",
         "targets": [
-          { "rawSql": "SELECT ROUND(100.0 * SUM(CASE WHEN test_status = 'PASSED' THEN 1 ELSE 0 END)/COUNT(*),2) as success_rate FROM test_results", "refId": "A" }
-        ]
-      },
-      {
-        "type": "stat",
-        "title": "Failure Rate (%)",
-        "id": 6,
-        "datasource": "PostgreSQL",
-        "targets": [
-          { "rawSql": "SELECT ROUND(100.0 * SUM(CASE WHEN test_status = 'FAILED' THEN 1 ELSE 0 END)/COUNT(*),2) as failure_rate FROM test_results", "refId": "A" }
-        ]
-      },
-      {
-        "type": "gauge",
-        "title": "Avg Test Duration (sec)",
-        "id": 7,
-        "datasource": "PostgreSQL",
-        "targets": [{ "rawSql": "SELECT ROUND(AVG(test_duration),2) as avg_duration FROM test_results", "refId": "A" }]
-      },
-      {
-        "type": "gauge",
-        "title": "Max Test Duration (sec)",
-        "id": 8,
-        "datasource": "PostgreSQL",
-        "targets": [{ "rawSql": "SELECT MAX(test_duration) as max_duration FROM test_results", "refId": "A" }]
-      },
-      {
-        "type": "graph",
-        "title": "Success vs Failure Over Time",
-        "id": 9,
-        "datasource": "PostgreSQL",
-        "targets": [
           {
-            "format": "time_series",
-            "rawSql": "SELECT test_end_time as time, SUM(CASE WHEN test_status = 'PASSED' THEN 1 ELSE 0 END) as passed, SUM(CASE WHEN test_status = 'FAILED' THEN 1 ELSE 0 END) as failed FROM test_results GROUP BY test_end_time ORDER BY test_end_time",
+            "rawSql": "SELECT ROUND(100.0 * SUM(CASE WHEN test_status = 'PASSED' THEN 1 ELSE 0 END)/COUNT(*),2) as success_rate FROM test_results",
             "refId": "A"
           }
         ]
       },
       {
+        "type": "gauge",
+        "title": "Avg Test Duration (sec)",
+        "id": 6,
+        "datasource": "PostgreSQL",
+        "targets": [{ "rawSql": "SELECT ROUND(AVG(test_duration),2) as avg_duration FROM test_results", "refId": "A" }]
+      },
+
+      {
+        "type": "row",
+        "title": "🧪 Stats par Suite",
+        "id": 200
+      },
+      {
         "type": "table",
-        "title": "Last 10 Executed Test Cases",
+        "title": "Tests per Suite",
+        "id": 7,
+        "datasource": "PostgreSQL",
+        "targets": [
+          {
+            "rawSql": "SELECT test_suite_name, COUNT(*) as total, SUM(CASE WHEN test_status='PASSED' THEN 1 ELSE 0 END) as passed, SUM(CASE WHEN test_status='FAILED' THEN 1 ELSE 0 END) as failed, ROUND(AVG(test_duration),2) as avg_duration FROM test_results GROUP BY test_suite_name ORDER BY total DESC",
+            "refId": "A"
+          }
+        ]
+      },
+
+      {
+        "type": "row",
+        "title": "🧩 Stats par Type de Test",
+        "id": 300
+      },
+      {
+        "type": "piechart",
+        "title": "Répartition par Type (UI/API/Mobile)",
+        "id": 8,
+        "datasource": "PostgreSQL",
+        "targets": [
+          { "rawSql": "SELECT test_type, COUNT(*) as total FROM test_results GROUP BY test_type", "refId": "A" }
+        ]
+      },
+
+      {
+        "type": "row",
+        "title": "⚙️ Stats par Feature",
+        "id": 400
+      },
+      {
+        "type": "table",
+        "title": "Tests par Feature",
+        "id": 9,
+        "datasource": "PostgreSQL",
+        "targets": [
+          { "rawSql": "SELECT feature, COUNT(*) as total, SUM(CASE WHEN test_status='PASSED' THEN 1 ELSE 0 END) as passed, SUM(CASE WHEN test_status='FAILED' THEN 1 ELSE 0 END) as failed FROM test_results GROUP BY feature ORDER BY total DESC", "refId": "A" }
+        ]
+      },
+
+      {
+        "type": "row",
+        "title": "🌐 Stats par Navigateur",
+        "id": 500
+      },
+      {
+        "type": "piechart",
+        "title": "Répartition par Navigateur",
         "id": 10,
         "datasource": "PostgreSQL",
         "targets": [
-          { "rawSql": "SELECT test_case_name, test_status, test_duration, execution_date FROM test_results ORDER BY execution_date DESC LIMIT 10", "refId": "A" }
+          { "rawSql": "SELECT browser, COUNT(*) as total FROM test_results GROUP BY browser", "refId": "A" }
         ]
       },
+
       {
-        "type": "table",
-        "title": "Top 5 Slowest Test Cases",
+        "type": "row",
+        "title": "🚀 Stats CI/CD (Jenkins Builds)",
+        "id": 600
+      },
+      {
+        "type": "graph",
+        "title": "Tests Success/Fail par Build",
         "id": 11,
         "datasource": "PostgreSQL",
         "targets": [
-          { "rawSql": "SELECT test_case_name, test_duration, test_status FROM test_results ORDER BY test_duration DESC LIMIT 5", "refId": "A" }
+          {
+            "rawSql": "SELECT build_number as metric, SUM(CASE WHEN test_status='PASSED' THEN 1 ELSE 0 END) as passed, SUM(CASE WHEN test_status='FAILED' THEN 1 ELSE 0 END) as failed FROM test_results GROUP BY build_number ORDER BY build_number::int",
+            "refId": "A"
+          }
         ]
-      },
-      {
-        "type": "stat",
-        "title": "Tests per Suite",
-        "id": 12,
-        "datasource": "PostgreSQL",
-        "targets": [
-          { "rawSql": "SELECT test_suite_name, COUNT(*) as nb_tests FROM test_results GROUP BY test_suite_name", "refId": "A" }
-        ],
-        "repeat": "test_suite_name",
-        "repeatDirection": "h"
-      },
-      {
-        "type": "gauge",
-        "title": "Avg Duration per Suite",
-        "id": 13,
-        "datasource": "PostgreSQL",
-        "targets": [
-          { "rawSql": "SELECT test_suite_name, ROUND(AVG(test_duration),2) as avg_duration FROM test_results GROUP BY test_suite_name", "refId": "A" }
-        ],
-        "repeat": "test_suite_name"
       }
     ],
     "templating": {
