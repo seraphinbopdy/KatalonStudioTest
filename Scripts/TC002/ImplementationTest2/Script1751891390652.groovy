@@ -24,6 +24,22 @@ import java.text.SimpleDateFormat
 import com.kms.katalon.core.testobject.ConditionType as ConditionType
 
 
+import com.kms.katalon.core.configuration.RunConfiguration
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+// Créer un profil utilisateur Chrome unique
+String uniqueUserDataDir = "/tmp/chrome-profile-" + System.currentTimeMillis()
+
+// Ajouter les arguments Chrome
+RunConfiguration.setWebDriverPreferencesProperty("args", [
+	"--headless=new",
+	"--user-data-dir=" + uniqueUserDataDir,
+	"--disable-dev-shm-usage",
+	"--no-sandbox",
+	"--disable-gpu"
+])
+
+
 import test_TC004_TC005_TC006_TC007.BuildDataGestionnaire
 import test_TC004_TC005_TC006_TC007.BuildDataCopropriete
 import test_TC004_TC005_TC006_TC007.BuildDataCreateContrat
