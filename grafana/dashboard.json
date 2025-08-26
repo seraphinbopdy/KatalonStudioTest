@@ -1,0 +1,88 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "katalon-tests",
+    "title": "Katalon Test Results",
+    "timezone": "browser",
+    "schemaVersion": 37,
+    "version": 1,
+    "refresh": "10s",
+    "tags": ["CI", "Katalon", "Tests"],
+    "panels": [
+      {
+        "type": "stat",
+        "title": "Total Tests",
+        "id": 1,
+        "datasource": "PostgreSQL",
+        "targets": [
+          {
+            "format": "table",
+            "rawSql": "SELECT COUNT(*) as total FROM test_results",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "type": "stat",
+        "title": "Passed Tests",
+        "id": 2,
+        "datasource": "PostgreSQL",
+        "targets": [
+          {
+            "format": "table",
+            "rawSql": "SELECT COUNT(*) as passed FROM test_results WHERE test_status = 'PASSED'",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "type": "stat",
+        "title": "Failed Tests",
+        "id": 3,
+        "datasource": "PostgreSQL",
+        "targets": [
+          {
+            "format": "table",
+            "rawSql": "SELECT COUNT(*) as failed FROM test_results WHERE test_status = 'FAILED'",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "title": "Last 10 Executed Test Cases",
+        "id": 4,
+        "datasource": "PostgreSQL",
+        "targets": [
+          {
+            "format": "table",
+            "rawSql": "SELECT test_case_name, test_status, test_duration, execution_date FROM test_results ORDER BY execution_date DESC LIMIT 10",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "showHeader": true
+        }
+      },
+      {
+        "type": "graph",
+        "title": "Test Duration Over Time",
+        "id": 5,
+        "datasource": "PostgreSQL",
+        "targets": [
+          {
+            "format": "time_series",
+            "rawSql": "SELECT test_end_time as time, test_duration as value, test_case_name as metric FROM test_results ORDER BY test_end_time DESC",
+            "refId": "A"
+          }
+        ],
+        "lines": true,
+        "linewidth": 2
+      }
+    ],
+    "templating": {
+      "list": []
+    }
+  },
+  "overwrite": true
+}
