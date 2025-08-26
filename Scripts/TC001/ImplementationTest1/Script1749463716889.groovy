@@ -24,19 +24,19 @@ import test_TC004_TC005_TC006_TC007.BuildDataCopropriete
 import test_TC004_TC005_TC006_TC007.BuildDataCreateContrat
 import test_TC004_TC005_TC006_TC007.BuildDataActivateContract
 
-import com.kms.katalon.core.webui.driver.DriverFactory
+import com.kms.katalon.core.configuration.RunConfiguration
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-// Créer un profil Chrome unique
+// Créer un profil utilisateur Chrome unique
 String uniqueUserDataDir = "/tmp/chrome-profile-" + System.currentTimeMillis()
 
-// Ajouter des arguments au Chrome lancé par Katalon
-DriverFactory.setWebDriverPreferencesProperty("args", [
-	"--headless=new",
-	"--user-data-dir=" + uniqueUserDataDir,
-	"--disable-dev-shm-usage",
-	"--no-sandbox",
-	"--disable-gpu"
+// Ajouter les arguments Chrome
+RunConfiguration.setWebDriverPreferencesProperty("args", [
+    "--headless=new",
+    "--user-data-dir=" + uniqueUserDataDir,
+    "--disable-dev-shm-usage",
+    "--no-sandbox",
+    "--disable-gpu"
 ])
 
 
