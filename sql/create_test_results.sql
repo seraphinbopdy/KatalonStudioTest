@@ -5,7 +5,6 @@ CREATE TABLE test_results (
     environment VARCHAR(50),
     ci_tool VARCHAR(50),
     test_suite_name VARCHAR(255) NOT NULL,
-    status VARCHAR(20) NOT NULL,
     total_tests INT,
     passed_tests INT,
     failed_tests INT,
@@ -24,5 +23,4 @@ CREATE TABLE test_results (
 
 CREATE INDEX idx_test_suite_name ON test_results(test_suite_name);
 CREATE INDEX idx_test_case_name ON test_results(test_case_name);
-CREATE INDEX idx_status ON test_results(test_status);
 CREATE INDEX idx_execution_date ON test_results(execution_date);
