@@ -113,7 +113,7 @@ class TestListener {
 				stmt.setInt(16, failedTests)
 				stmt.setInt(17, skippedTests)
 	
-				stmt.setString(18, RunConfiguration.getVersion())
+				stmt.setString(18, RunConfiguration.getAppVersion())
 				stmt.setString(19, getBrowserInfo())
 				stmt.setString(20, feature)
 				stmt.setString(21, testType)
