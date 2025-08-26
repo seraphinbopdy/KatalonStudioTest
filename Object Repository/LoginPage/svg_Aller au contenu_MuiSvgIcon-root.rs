@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>svg_Aller au contenu_MuiSvgIcon-root</name>
+   <tag></tag>
+   <elementGuidId>78d5ee11-5683-4511-96be-b5a0a06b2e2a</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>span.AppButton.AppButtonActive.jss215.jss216 > div.jss218 > svg.MuiSvgIcon-root</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Aller au contenu'])[1]/following::*[name()='svg'][7]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>svg</value>
+      <webElementGuid>942fad8c-942e-4833-83a8-1f80c3d16061</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>MuiSvgIcon-root</value>
+      <webElementGuid>0a75c883-408f-4ca8-92ec-e96cd43a4f51</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>focusable</name>
+      <type>Main</type>
+      <value>false</value>
+      <webElementGuid>bc31a648-4a22-4ace-b5d9-00a665df3022</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>viewBox</name>
+      <type>Main</type>
+      <value>0 0 24 24</value>
+      <webElementGuid>35659623-aad2-4fd3-9370-9e1d55b28359</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-hidden</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>06d64550-0d39-4d7b-987e-4f747c8ece7e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>role</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>bc6dcc5f-db5d-4e64-8063-0f5f6f6853df</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>oc-testid</name>
+      <type>Main</type>
+      <value>Icon-tza0oUNk</value>
+      <webElementGuid>77d00e1b-e0f0-4398-b98a-2e741f39ae8a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;root&quot;)/div[1]/div[@class=&quot;layout jss132&quot;]/div[@class=&quot;jss133 jss2&quot;]/main[@class=&quot;jss134&quot;]/div[@class=&quot;MuiDrawer-root MuiDrawer-docked jss143 jss144&quot;]/div[@class=&quot;MuiPaper-root MuiDrawer-paper MuiDrawer-paperAnchorLeft jss145 MuiDrawer-paperAnchorDockedLeft MuiPaper-elevation0&quot;]/div[@class=&quot;CustomMenu jss203&quot;]/div[@class=&quot;jss209&quot;]/div[@class=&quot;jss213&quot;]/span[@class=&quot;AppButton AppButtonActive jss215 jss216&quot;]/div[@class=&quot;jss218&quot;]/svg[@class=&quot;MuiSvgIcon-root&quot;]</value>
+      <webElementGuid>d67e35f1-93b6-420a-bbf3-01199858962a</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Aller au contenu'])[1]/following::*[name()='svg'][7]</value>
+      <webElementGuid>264f5056-3f8c-4204-8902-e825b3765be1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Clients'])[2]/preceding::*[name()='svg'][7]</value>
+      <webElementGuid>0fd4e16c-45aa-4b46-b8f0-8f085386d7f0</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Contacts'])[1]/preceding::*[name()='svg'][7]</value>
+      <webElementGuid>821abdb0-01ed-4ad2-846b-bb507fb990ae</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

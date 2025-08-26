@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>ValidationFactureTC001</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>f163ad65-1db3-4a54-b57c-b75cbe20f8f3</testCaseGuid>
+</TestCaseEntity>
